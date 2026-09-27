@@ -149,9 +149,9 @@ describe('the registry', () => {
 
 describe('hooks', () => {
   const hooks = listHooks();
-  it('joins ownership and docstrings into the 11 policies the dispatcher calls', () => {
-    expect(hooks).toHaveLength(11);
-    expect(hooks.map((h) => h.id).sort()).toEqual(['brief-guard', 'filter-output', 'grade-bash', 'neutralize', 'plan-card', 'plan-webfetch', 'readonly-bash', 'session', 'stop-gate', 'tier-spawns', 'usage-log']);
+  it('joins ownership and docstrings into the 13 policies the dispatcher calls', () => {
+    expect(hooks).toHaveLength(13);
+    expect(hooks.map((h) => h.id).sort()).toEqual(['brief-guard', 'filter-output', 'grade-bash', 'intent-overlap', 'neutralize', 'plan-card', 'plan-webfetch', 'readonly-bash', 'session', 'stage-files', 'stop-gate', 'tier-spawns', 'usage-log']);
   });
   it('knows which hook a stance gates', () => {
     const card = hooks.find((h) => h.id === 'plan-card')!;
@@ -163,7 +163,7 @@ describe('hooks', () => {
     expect(card.matcher).toBeNull();
     expect(card.timeout).toBeNull();
     expect(card.dispatcher).toBe('adapters/claude-code/hook.py');
-    expect(hooks.filter((h) => h.always)).toHaveLength(10);
+    expect(hooks.filter((h) => h.always)).toHaveLength(12);
   });
   it('carries the docstring and the helper', () => {
     const gate = hooks.find((h) => h.id === 'stop-gate')!;
@@ -183,7 +183,7 @@ describe('the CLI and the honesty strip', () => {
   });
   it('reads the always-loaded cap and counts the tests', () => {
     const h = honesty();
-    expect(h.cap).toBe(200);
+    expect(h.cap).toBe(225);
     expect(h.tests).toBeGreaterThan(150);
     expect(h.testFiles).toBeGreaterThan(10);
     expect(h.ci).toBe(true);

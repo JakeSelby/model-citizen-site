@@ -24,11 +24,12 @@ function harness(settingsHooks: unknown, hookIds: Record<string, object>, script
 }
 
 describe('scriptFor', () => {
-  const scripts = ['stop-gate.py', 'tier-agent-spawns.py', 'allow-readonly-bash.py', 'grade-bash.py', 'posture.py'];
+  const scripts = ['stop-gate.py', 'tier-agent-spawns.py', 'allow-readonly-bash.py', 'grade-bash.py', 'harness-session.py', 'workspace-session.py', 'posture.py'];
   it('takes the stem, then the one script carrying every word of the id', () => {
     expect(scriptFor('stop-gate', scripts)).toBe('stop-gate.py');
     expect(scriptFor('tier-spawns', scripts)).toBe('tier-agent-spawns.py');
     expect(scriptFor('readonly-bash', scripts)).toBe('allow-readonly-bash.py');
+    expect(scriptFor('session', scripts)).toBe('harness-session.py');
   });
   it('refuses an id with no script or more than one', () => {
     expect(() => scriptFor('missing', scripts)).toThrow(/matches 0 scripts/);

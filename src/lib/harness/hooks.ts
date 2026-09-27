@@ -43,12 +43,14 @@ function docstringOf(source: string): string {
 }
 
 /**
- * The script a policy id names. An id is either the script's stem (`stop-gate`) or a shortening
- * whose words all appear in it (`tier-spawns` → `tier-agent-spawns.py`). Anything else, or two
- * candidates, throws: a hook page with the wrong source is worse than a failed build.
+ * The script a policy id names. An id is the script's stem (`stop-gate`), its legacy
+ * `harness-<id>` name, or a shortening whose words all appear in it
+ * (`tier-spawns` → `tier-agent-spawns.py`). Anything else, or two candidates, throws: a hook page
+ * with the wrong source is worse than a failed build.
  */
 export function scriptFor(id: string, scripts: string[]): string {
   if (scripts.includes(`${id}.py`)) return `${id}.py`;
+  if (scripts.includes(`harness-${id}.py`)) return `harness-${id}.py`;
   const words = id.split('-');
   const hits = scripts.filter((s) => {
     const parts = s.replace(/\.py$/, '').split('-');
