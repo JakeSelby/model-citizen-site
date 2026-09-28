@@ -28,7 +28,7 @@ const head = (overrides = {}) => {
 
 const BANNER =
   '<aside class="rename" aria-label="Name change">\n  <p>Model Citizen was formerly ' +
-  '<a href="https://github.com/JakeSelby/agent-harness">agent-harness</a>: same project, new name.</p>\n</aside>';
+  '<a href="https://github.com/JakeSelby/model-citizen">agent-harness</a>: same project, new name.</p>\n</aside>';
 
 const page = (overrides, banner = BANNER) =>
   `<!doctype html><html><head>${head(overrides)}</head><body>${banner}</body></html>`;
@@ -144,7 +144,7 @@ test('a banner with other words fails', () => {
 });
 
 test('a banner that does not link to the old repository fails', () => {
-  const { status, out } = smoke({ banner: BANNER.replace('https://github.com/JakeSelby/agent-harness', 'https://example.com') });
+  const { status, out } = smoke({ banner: BANNER.replace('https://github.com/JakeSelby/model-citizen', 'https://example.com') });
   assert.equal(status, 1);
-  assert.match(out, /banner does not link to the agent-harness repository/);
+  assert.match(out, /banner does not link to the Model Citizen repository/);
 });

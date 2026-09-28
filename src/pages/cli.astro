@@ -9,7 +9,7 @@ const headings = cli.map((c) => ({ depth: 2, slug: c.name, text: `harness ${c.na
 
 <DocsLayout
   title="The CLI"
-  description={`bin/harness: ${cli.length} subcommands that install, link, lint and report on the harness. Python 3.9 standard library, no dependencies.`}
+  description={`bin/citizen: ${cli.length} subcommands that install, link, lint and report on Model Citizen. Python 3.9 standard library, no dependencies.`}
   crumbs={[{ label: 'cli' }]}
   sourcePath="bin/harness"
   headings={headings}
@@ -18,8 +18,8 @@ const headings = cli.map((c) => ({ depth: 2, slug: c.name, text: `harness ${c.na
 >
   <div class="eyebrow"><span class="pill amber">CLI</span><span class="pill">Python 3.9+</span></div>
   <h1>The CLI</h1>
-  <p class="lede">One script, <code>bin/harness</code>, with {cli.length} subcommands. No dependencies, no build, and every subcommand is safe to run twice.</p>
-  <MetaStrip fields={[{ label: 'Path', value: 'bin/harness', mono: true }, { label: 'Subcommands', value: String(cli.length) }, { label: 'Runtime', value: 'python3 ≥ 3.9' }]} />
+  <p class="lede">One public command, <code>bin/citizen</code>, with {cli.length} subcommands. No dependencies, no build, and every subcommand is safe to run twice.</p>
+  <MetaStrip fields={[{ label: 'Path', value: 'bin/citizen', mono: true }, { label: 'Subcommands', value: String(cli.length) }, { label: 'Runtime', value: 'python3 ≥ 3.9' }]} />
   <div class="harness-prose">
     {cli.map((c) => (
       <section>
@@ -27,6 +27,6 @@ const headings = cli.map((c) => ({ depth: 2, slug: c.name, text: `harness ${c.na
         <p>{c.help.replace(/^\w/, (ch) => ch.toUpperCase())}.</p>
       </section>
     ))}
-    <p class="muted small">Read straight from the argparse definitions in <code>bin/harness</code>; run <code>bin/harness &lt;subcommand&gt; --help</code> for the flags.</p>
+    <p class="muted small">Read straight from the CLI's argparse definitions; run <code>bin/citizen &lt;subcommand&gt; --help</code> for the flags.</p>
   </div>
 </DocsLayout>

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 /** Absolute path of the agent-harness submodule checkout. */
 export const VENDOR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../vendor/agent-harness');
 
-export const REPO_URL = 'https://github.com/JakeSelby/agent-harness';
+export const REPO_URL = 'https://github.com/JakeSelby/model-citizen';
 
 /** Repo-relative path → its file on disk. */
 export function vendorFile(rel: string): string {
@@ -45,7 +45,7 @@ export interface Product {
 export function product(root = VENDOR): Product {
   const file = path.join(root, 'product.json');
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {
-    headline: 'Agent Harness reference',
+    headline: 'Model Citizen reference',
     description: 'Reference for the pinned harness release. Inspect its configuration and compatibility before choosing an agent runtime.',
     stances: 'Choose explicit working preferences through personal stances.',
   };

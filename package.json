@@ -1,9 +1,9 @@
 {
-  "name": "agent-harness-site",
+  "name": "model-citizen-site",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Reference site for JakeSelby/agent-harness, built from the harness checkout at agent-harness.jakeselby.com",
+  "description": "Reference site for JakeSelby/model-citizen, built from the release checkout at model-citizen.dev",
   "engines": {
     "node": ">=22.12.0"
   },

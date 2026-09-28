@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploy agent-harness.jakeselby.com from the Mac: infrastructure and site.
+# Deploy model-citizen.dev from the Mac: infrastructure and site.
 # Usage: ./scripts/deploy.sh
 # Prerequisites: .env.infra deployment configuration (see README).
 #
@@ -77,4 +77,4 @@ export BUCKET DIST_ID
 
 ./scripts/deploy-site.sh
 
-echo "✓ Deploy complete → https://agent-harness.jakeselby.com"
+echo "✓ Deploy complete → https://model-citizen.dev"
