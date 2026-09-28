@@ -131,12 +131,14 @@ describe('the registry', () => {
   });
 
   it('points source links at the pinned tag', () => {
-    expect(sourceUrl('claude/skills/plan-authoring/SKILL.md')).toBe(`https://github.com/JakeSelby/agent-harness/blob/v${version()}/claude/skills/plan-authoring/SKILL.md`);
-    expect(sourceUrl('claude/stances/testing')).toBe(`https://github.com/JakeSelby/agent-harness/tree/v${version()}/claude/stances/testing`);
+    expect(sourceUrl('claude/skills/plan-authoring/SKILL.md')).toBe(`https://github.com/JakeSelby/model-citizen/blob/v${version()}/claude/skills/plan-authoring/SKILL.md`);
+    expect(sourceUrl('claude/stances/testing')).toBe(`https://github.com/JakeSelby/model-citizen/tree/v${version()}/claude/stances/testing`);
   });
 
   it('publishes a manifest with one route per page', () => {
     const m = manifest();
+    expect(m.name).toBe('model-citizen');
+    expect(m.repo).toBe('https://github.com/JakeSelby/model-citizen');
     expect(m.version).toBe(version());
     const routes = m.routes.map((x) => x.route);
     expect(new Set(routes).size).toBe(routes.length);

@@ -12,13 +12,13 @@ const planned = compatibility().clients
   .map((client: { id: string }) => client.id);
 
 const clone = [
-  'git clone https://github.com/JakeSelby/agent-harness.git ~/repos/agent-harness',
+  'git clone https://github.com/JakeSelby/model-citizen.git ~/repos/agent-harness',
   'cd ~/repos/agent-harness',
-  'bin/harness install',
+  'bin/citizen install',
   '# Homebrew packages, VS Code + extensions, Claude Code, Codex, gh, then sync',
 ].join('\n');
-const adopt = 'bin/harness sync --dry-run\nbin/harness sync';
-const after = ['bin/harness doctor    # versions, logins, links, drift', 'bin/harness diff      # what changed since the last sync', 'bin/harness uninstall # put everything back'].join('\n');
+const adopt = 'bin/citizen sync --dry-run\nbin/citizen sync';
+const after = ['bin/citizen doctor    # versions, logins, links, drift', 'bin/citizen diff      # what changed since the last sync', 'bin/citizen uninstall # put everything back'].join('\n');
 
 const headings = [
   { depth: 2, slug: 'install', text: 'Install' },
@@ -56,7 +56,7 @@ const headings = [
 
     <h2 id="configure">Configure</h2>
     <p>
-      Copy <code>config.example.json</code> to <code>~/.config/agent-harness/config.json</code>, put your name and stances in it, and run <code>bin/harness sync</code> again.
+      Copy <code>config.example.json</code> to <code>~/.config/agent-harness/config.json</code>, put your name and stances in it, and run <code>bin/citizen sync</code> again.
       Keep personal identity outside the checkout. Each stance key selects one policy projected into the runtimes you enable.
     </p>
     <SourceBlock code={config} lang="json" label="config.example.json" />
@@ -69,7 +69,7 @@ const headings = [
         </li>
       ))}
     </ul>
-    <p>Session stance choices are explicit and scoped; they never grant native permissions. Inspect effective selections with <code>harness stances --json</code>.</p>
+    <p>Session stance choices are explicit and scoped; they never grant native permissions. Inspect effective selections with <code>citizen stances --json</code>.</p>
 
     <h2 id="check">Check and undo</h2>
     <SourceBlock code={after} lang="sh" label="After the sync" />

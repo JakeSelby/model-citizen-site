@@ -38,9 +38,9 @@ const plannedHref = (item: { issue?: number; catalog?: string; doc?: string }): 
 
 const install = [
   'git clone --branch stable \\',
-  '  https://github.com/JakeSelby/agent-harness.git ~/repos/agent-harness',
+  '  https://github.com/JakeSelby/model-citizen.git ~/repos/agent-harness',
   'cd ~/repos/agent-harness',
-  'bin/harness install',
+  'bin/citizen install',
   '# Homebrew packages, VS Code + extensions, Claude Code, Codex, gh, then sync',
 ].join('\n');
 

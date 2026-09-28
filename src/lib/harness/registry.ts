@@ -601,7 +601,7 @@ export function manifest() {
     ...r.stances.map((d) => ({ route: d.route, kind: 'stance-dimension', id: d.id, title: d.title, source: d.sourcePath })),
     ...flatten().map((e) => ({ route: e.route, kind: e.kind, id: e.id, title: e.title, source: e.sourcePath })),
   ];
-  return { name: 'agent-harness', version: r.version, repo: REPO_URL, counts: getCounts(), routes,
+  return { name: 'model-citizen', version: r.version, repo: REPO_URL, counts: getCounts(), routes,
     compatibility: compatibility(), release: { tag: `v${r.version}`,
       commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: VENDOR, encoding: 'utf8' }).trim() } };
 }

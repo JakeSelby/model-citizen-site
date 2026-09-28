@@ -1,7 +1,7 @@
 import path from 'node:path';
 
 /**
- * Map a repo-relative path inside agent-harness to a route on this site, or to the
+ * Map a repo-relative path inside Model Citizen to a route on this site, or to the
  * file on GitHub when the site has no page for it. Returns null for paths that
  * resolve outside the repository, which the caller leaves untouched.
  */
@@ -9,7 +9,7 @@ export function routeForRepoPath(
   rel: string,
   version: string,
   exists: (rel: string) => boolean,
-  repoUrl = 'https://github.com/JakeSelby/agent-harness',
+  repoUrl = 'https://github.com/JakeSelby/model-citizen',
 ): string | null {
   const p = rel.replace(/\\/g, '/').replace(/^\.\//, '');
   if (p.startsWith('../') || p === '..' || p === '') return null;

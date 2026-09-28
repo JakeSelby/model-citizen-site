@@ -1,7 +1,7 @@
-# agent-harness-site
+# model-citizen-site
 
-The reference site for [agent-harness](https://github.com/JakeSelby/agent-harness), at
-**https://agent-harness.jakeselby.com**. An overview of the system, then one page per rule,
+The reference site for [Model Citizen](https://github.com/JakeSelby/model-citizen), at
+**https://model-citizen.dev**. An overview of the system, then one page per rule,
 stance variant, skill, agent, command, hook and doc, with search and a link from every page to
 its source file at the tagged release.
 
@@ -21,14 +21,14 @@ npm run check        # astro check
 npm run infra:diff   # cdk diff for the AgentHarnessSite stack
 ```
 
-## Updating to a new harness release
+## Updating to a new Model Citizen release
 
 ```bash
 git -C vendor/agent-harness fetch --tags
 git -C vendor/agent-harness checkout v0.3.0
 git add vendor/agent-harness
 npm test && npm run build && npm run smoke
-git commit -m "chore(vendor): agent-harness v0.3.0"
+git commit -m "chore(vendor): pin Model Citizen v0.3.0"
 ```
 
 Push to `main` and CI deploys. The smoke test refuses a submodule commit that is not the tag

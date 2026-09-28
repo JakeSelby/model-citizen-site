@@ -62,8 +62,8 @@ test('an unreadable manifest is drift, never current', () => {
 test('the issue names the release, what the site serves, why, the run and how it closes', () => {
   const decision = decide({ latest, live: stale, runs: [run(2, 'failure')], now: at(3) });
   const { title, body } = issue({ latest, decision });
-  assert.equal(title, 'Reference site is behind agent-harness v0.12.0');
-  assert.match(body, /serves v0\.11\.1 \(6fb7afb\); the latest agent-harness release is v0\.12\.0 \(d4cf311\)/);
+  assert.equal(title, 'Reference site is behind Model Citizen v0.12.0');
+  assert.match(body, /serves v0\.11\.1 \(6fb7afb\); the latest Model Citizen release is v0\.12\.0 \(d4cf311\)/);
   assert.match(body, /\*\*Why:\*\* repin has failed for v0\.12\.0\./);
   assert.match(body, /\*\*Run:\*\* https:\/\/example\.test\/runs\/2/);
   assert.ok(body.includes(MANIFEST_URL));

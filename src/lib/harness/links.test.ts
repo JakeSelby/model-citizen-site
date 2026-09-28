@@ -24,8 +24,8 @@ describe('routeForRepoPath', () => {
   });
 
   it('sends files without a page to GitHub at the pinned tag', () => {
-    expect(routeForRepoPath('LICENSE', V, exists)).toBe('https://github.com/JakeSelby/agent-harness/blob/v0.2.0/LICENSE');
-    expect(routeForRepoPath('tests/test_lint.py', V, exists)).toBe('https://github.com/JakeSelby/agent-harness/blob/v0.2.0/tests/test_lint.py');
+    expect(routeForRepoPath('LICENSE', V, exists)).toBe('https://github.com/JakeSelby/model-citizen/blob/v0.2.0/LICENSE');
+    expect(routeForRepoPath('tests/test_lint.py', V, exists)).toBe('https://github.com/JakeSelby/model-citizen/blob/v0.2.0/tests/test_lint.py');
   });
 
   it('leaves unknown and out-of-repo paths alone', () => {

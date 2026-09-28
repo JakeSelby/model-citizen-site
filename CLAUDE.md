@@ -1,7 +1,7 @@
-# agent-harness-site
+# model-citizen-site
 
-Public reference site for the agent-harness repository, at
-**https://agent-harness.jakeselby.com**. Astro 6, static, no client framework, hand-written CSS
+Public reference site for the Model Citizen repository, at
+**https://model-citizen.dev**. Astro 6, static, no client framework, hand-written CSS
 carrying the jakeselby.com paper palette with an amber accent.
 
 Nothing about the harness is authored here. `vendor/agent-harness` is a git submodule pinned to

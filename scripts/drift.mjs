@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Answers whether the live site serves the latest agent-harness release, and keeps one
+// Answers whether the live site serves the latest Model Citizen release, and keeps one
 // `release-drift` issue open for as long as it does not. repin.yml fails quietly when its gate
 // is red — it pushes nothing — so this compares the outcome, the live /manifest.json, with the
 // latest release, whatever the cause: a failed repin, a failed deploy or a repin that never ran.
@@ -8,8 +8,8 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
-export const HARNESS_REPO = 'JakeSelby/agent-harness';
-export const MANIFEST_URL = 'https://agent-harness.jakeselby.com/manifest.json';
+export const HARNESS_REPO = 'JakeSelby/model-citizen';
+export const MANIFEST_URL = 'https://model-citizen.dev/manifest.json';
 export const LABEL = 'release-drift';
 // Scheduled runs start late under load, so a release gets this long to reach the site before
 // silence counts as drift. A failed repin run for the release counts at once.
@@ -50,7 +50,7 @@ export function decide({ latest, live, runs = [], now, graceHours = GRACE_HOURS 
 
 export function issue({ latest, decision }) {
   const lines = [
-    `The live site serves ${decision.serving}; the latest agent-harness release is ${latest.tag} ` +
+    `The live site serves ${decision.serving}; the latest Model Citizen release is ${latest.tag} ` +
       `(${short(latest.commit)}), published ${latest.publishedAt}.`,
     '',
     `**Why:** ${decision.reason}.`,
@@ -61,7 +61,7 @@ export function issue({ latest, decision }) {
     `\`.github/workflows/drift.yml\` keeps this issue current and closes it once ${MANIFEST_URL} ` +
       `names ${latest.tag} and its commit.`,
   );
-  return { title: `Reference site is behind agent-harness ${latest.tag}`, body: lines.join('\n') };
+  return { title: `Reference site is behind Model Citizen ${latest.tag}`, body: lines.join('\n') };
 }
 
 // One open issue while the site is behind, none once it is current; a pending release leaves
@@ -103,7 +103,7 @@ function apply(site, actions) {
   for (const action of actions) {
     if (action.op === 'create') {
       gh(['label', 'create', LABEL, '-R', site, '--force', '--color', 'B60205',
-        '--description', 'A live surface lags the latest agent-harness release']);
+        '--description', 'A live surface lags the latest Model Citizen release']);
       gh(['issue', 'create', '-R', site, '--title', action.title, '--label', LABEL, '--body-file', '-'], action.body);
     } else if (action.op === 'edit') {
       gh(['issue', 'edit', String(action.number), '-R', site, '--title', action.title, '--body-file', '-'], action.body);
@@ -117,7 +117,7 @@ function apply(site, actions) {
 // hours would only bury it in mail. A run that cannot observe the site fails.
 export async function main(argv, env = process.env) {
   const dryRun = argv.includes('--dry-run');
-  const site = env.GH_REPO || 'JakeSelby/agent-harness-site';
+  const site = env.GH_REPO || 'JakeSelby/model-citizen-site';
   const state = await observe(site);
   const decision = decide({ ...state, now: Date.now() });
   const actions = plan(decision, state.open, issue({ latest: state.latest, decision }));

@@ -101,7 +101,7 @@ for (const file of htmlPages()) {
 // Every built page carries the name-change banner, with its exact text and its link to the
 // old repository.
 const BANNER_TEXT = 'Model Citizen was formerly agent-harness: same project, new name.';
-const BANNER_LINK = 'href="https://github.com/JakeSelby/agent-harness"';
+const BANNER_LINK = 'href="https://github.com/JakeSelby/model-citizen"';
 const htmlUnder = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
     const p = path.join(dir, e.name);
@@ -113,7 +113,7 @@ for (const file of htmlUnder(dist)) {
   const text = aside?.[1].replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
   if (!aside) fail(`${path.relative(dist, file)} has no name-change banner`);
   else if (text !== BANNER_TEXT) fail(`${path.relative(dist, file)} banner reads "${text}"`);
-  else if (!aside[1].includes(BANNER_LINK)) fail(`${path.relative(dist, file)} banner does not link to the agent-harness repository`);
+  else if (!aside[1].includes(BANNER_LINK)) fail(`${path.relative(dist, file)} banner does not link to the Model Citizen repository`);
 }
 
 // The submodule is at the tagged release the site claims to render.
