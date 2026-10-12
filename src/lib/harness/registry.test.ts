@@ -151,9 +151,9 @@ describe('the registry', () => {
 
 describe('hooks', () => {
   const hooks = listHooks();
-  it('joins ownership and docstrings into the 13 policies the dispatcher calls', () => {
-    expect(hooks).toHaveLength(13);
-    expect(hooks.map((h) => h.id).sort()).toEqual(['brief-guard', 'filter-output', 'grade-bash', 'intent-overlap', 'neutralize', 'plan-card', 'plan-webfetch', 'readonly-bash', 'session', 'stage-files', 'stop-gate', 'tier-spawns', 'usage-log']);
+  it('joins ownership and docstrings into the 15 policies the dispatcher calls', () => {
+    expect(hooks).toHaveLength(15);
+    expect(hooks.map((h) => h.id).sort()).toEqual(['brief-guard', 'filter-output', 'grade-bash', 'intent-overlap', 'neutralize', 'plan-card', 'plan-webfetch', 'readonly-bash', 'session', 'session-caps', 'stage-files', 'steer-polling', 'stop-gate', 'tier-spawns', 'usage-log']);
   });
   it('knows which hook a stance gates', () => {
     const card = hooks.find((h) => h.id === 'plan-card')!;
@@ -165,7 +165,7 @@ describe('hooks', () => {
     expect(card.matcher).toBeNull();
     expect(card.timeout).toBeNull();
     expect(card.dispatcher).toBe('adapters/claude-code/hook.py');
-    expect(hooks.filter((h) => h.always)).toHaveLength(12);
+    expect(hooks.filter((h) => h.always)).toHaveLength(14);
   });
   it('carries the docstring and the helper', () => {
     const gate = hooks.find((h) => h.id === 'stop-gate')!;
